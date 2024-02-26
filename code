@@ -1,0 +1,9 @@
+import pandas as pd
+# Load the dataset
+df = pd.read_csv("F:/IBM.csv")
+df.head()
+
+# Analyze the 'Attrition' variable
+attrition_counts = df['Attrition'].value_counts()
+
+print(attrition_counts)
