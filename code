@@ -7,3 +7,14 @@ df.head()
 attrition_counts = df['Attrition'].value_counts()
 
 print(attrition_counts)
+
+from sklearn.preprocessing import LabelEncoder
+
+# Initialize the LabelEncoder
+le = LabelEncoder()
+
+# Fit label encoder and return encoded labels
+df['Attrition'] = le.fit_transform(df['Attrition'])
+
+# Display the first few rows of the dataframe
+print(df[['Attrition']].head())
