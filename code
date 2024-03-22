@@ -83,3 +83,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.40, random
 # Print the size of each set to verify
 print(f"Training set size: {X_train.shape[0]} samples")
 print(f"Test set size: {X_test.shape[0]} samples")
+
+# use 'df_dummies' it's already been processed for categorical variables
+grouped_means = df_dummies.groupby('Attrition').mean()
+print(grouped_means)
