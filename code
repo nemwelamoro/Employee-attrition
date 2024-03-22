@@ -209,3 +209,24 @@ print("Prediction (0 = Stay, 1 = Leave):", employee_pred[0])
 employee_pred_proba = log_reg_sklearn.predict_proba(employee_df)
 # Output probability of leaving
 print("Probability of Leaving:", employee_pred_proba[0][1])
+
+import pandas as pd
+
+# Create a new dataframe with out-of-range values
+data = {
+    'Age': [100],
+    'DistanceFromHome': [300],
+    'EnvironmentSatisfaction': [3],  # Assume within normal range
+    'JobSatisfaction': [3],  # Assume within normal range
+    'MonthlyIncome': [50000],
+    'NumCompaniesWorked': [15],
+    'YearsAtCompany': [50],
+    'MaritalStatus_Single': [0]  # Assume within normal range
+}
+
+new_employee_df = pd.DataFrame(data)
+
+# Assuming 'logreg' is our trained logistic regression model
+prediction = log_reg_sklearn.predict(new_employee_df)
+
+print("Prediction for the new employee (0 = Stay, 1 = Leave):", prediction)
