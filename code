@@ -171,3 +171,12 @@ print(f"Precision: {precision}")
 balanced_accuracy = balanced_accuracy_score(y_test, y_pred)
 
 print(f"Balanced Accuracy: {balanced_accuracy}")
+
+# Calculate accuracy on the training set
+y_train_pred = log_reg_sklearn.predict(X_train)
+train_accuracy = accuracy_score(y_train, y_train_pred)
+
+#  already calculated the test accuracy previously
+test_accuracy = accuracy 
+print(f"Training Set Accuracy: {train_accuracy}")
+print(f"Test Set Accuracy: {test_accuracy}")
