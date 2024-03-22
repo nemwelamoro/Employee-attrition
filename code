@@ -328,3 +328,12 @@ print(f"d. Precision: {precision}")
 balanced_accuracy = balanced_accuracy_score(y_test, y_pred)
 
 print(f"e. Balanced Accuracy: {balanced_accuracy}")
+
+
+# Calculate accuracy on the training set
+y_train_pred = best_rf.predict(X_train)
+accuracy_train = accuracy_score(y_train, y_train_pred)
+print(f"Accuracy on the Training Set: {accuracy_train}")
+
+# The accuracy on the test set was previously calculated, but let's state it again for comparison
+print(f"Accuracy on the Test Set: {accuracy}")
