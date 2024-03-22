@@ -295,3 +295,20 @@ indices = np.argsort(importances)[::-1]
 print("Feature ranking:")
 for f in range(X_train.shape[1]):
     print(f"{f + 1}. feature {X_train.columns[indices[f]]} ({importances[indices[f]]})")
+
+
+from sklearn.metrics import confusion_matrix, accuracy_score, recall_score, precision_score, balanced_accuracy_score
+
+# Make predictions with the test set
+y_pred = best_rf.predict(X_test)
+
+# Build the confusion matrix
+cm = confusion_matrix(y_test, y_pred)
+print("Confusion Matrix:")
+print(cm)
+
+# Calculate metrics
+accuracy = accuracy_score(y_test, y_pred)
+
+# Print metrics
+print(f"a. Accuracy Rate: {accuracy}")
