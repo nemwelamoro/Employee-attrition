@@ -180,3 +180,32 @@ train_accuracy = accuracy_score(y_train, y_train_pred)
 test_accuracy = accuracy 
 print(f"Training Set Accuracy: {train_accuracy}")
 print(f"Test Set Accuracy: {test_accuracy}")
+
+
+import pandas as pd
+
+# Example values for the hypothetical employee
+data = {
+    'Age': [28],  # Age of the employee
+    'DistanceFromHome': [10],  # Distance from home in km
+    'EnvironmentSatisfaction': [3],  # Satisfaction with the environment (1-4 scale)
+    'JobSatisfaction': [2],  # Satisfaction with the job (1-4 scale)
+    'MonthlyIncome': [5000],  # Monthly income in USD
+    'NumCompaniesWorked': [2],  # Number of companies worked at
+    'YearsAtCompany': [3],  # Number of years at the current company
+    'MaritalStatus_Single': [1]  # Marital status (0 = Not single, 1 = Single)
+}
+
+# Create a DataFrame
+employee_df = pd.DataFrame(data)
+
+# our model is named log_reg_sklearn and is already trained
+employee_pred = log_reg_sklearn.predict(employee_df)
+
+# Output prediction
+print("Prediction (0 = Stay, 1 = Leave):", employee_pred[0])
+
+#probability of leaving
+employee_pred_proba = log_reg_sklearn.predict_proba(employee_df)
+# Output probability of leaving
+print("Probability of Leaving:", employee_pred_proba[0][1])
