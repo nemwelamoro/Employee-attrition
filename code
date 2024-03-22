@@ -70,3 +70,16 @@ df_dummies = pd.get_dummies(df, columns=categorical_vars, drop_first=True)
 
 # Display the first few rows to verify
 print(df_dummies.head())
+
+from sklearn.model_selection import train_test_split
+
+# Define your features (X) and the target variable (y)
+X = df_dummies.drop('Attrition', axis=1)  
+y = df_dummies['Attrition']
+
+# Split the data into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.40, random_state=3)  # Example seed
+
+# Print the size of each set to verify
+print(f"Training set size: {X_train.shape[0]} samples")
+print(f"Test set size: {X_test.shape[0]} samples")
