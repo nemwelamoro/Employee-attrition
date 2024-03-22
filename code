@@ -138,3 +138,11 @@ log_reg_sklearn = LogisticRegression(max_iter=1000)
 
 # Fitting the model to the training data
 log_reg_sklearn.fit(X_train, y_train)
+
+
+# Making predictions on the test set
+y_pred = log_reg_sklearn.predict(X_test)
+
+# Evaluating the model
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy}")
