@@ -283,3 +283,15 @@ print("Best parameters:", best_params)
 
 # Best model
 best_rf = grid_search.best_estimator_
+
+
+import numpy as np
+# Get feature importances from the random forest model
+importances = best_rf.feature_importances_
+
+# Sort the feature importances in descending order
+indices = np.argsort(importances)[::-1]
+
+print("Feature ranking:")
+for f in range(X_train.shape[1]):
+    print(f"{f + 1}. feature {X_train.columns[indices[f]]} ({importances[indices[f]]})")
