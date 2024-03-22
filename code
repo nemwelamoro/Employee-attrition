@@ -230,3 +230,8 @@ new_employee_df = pd.DataFrame(data)
 prediction = log_reg_sklearn.predict(new_employee_df)
 
 print("Prediction for the new employee (0 = Stay, 1 = Leave):", prediction)
+
+import pandas as pd
+# Load the dataset
+df = pd.read_csv("F:/IBM.csv")
+df.head()
