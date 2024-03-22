@@ -146,3 +146,28 @@ y_pred = log_reg_sklearn.predict(X_test)
 # Evaluating the model
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {accuracy}")
+
+from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, balanced_accuracy_score
+
+# Generating the confusion matrix
+conf_matrix = confusion_matrix(y_test, y_pred)
+TN, FP, FN, TP = conf_matrix.ravel()
+
+# Calculating the metrics
+sensitivity_rate = TP / (TP + FN)  # Also known as recall
+
+print(f"Sensitivity Rate (Recall): {sensitivity_rate}")
+
+specificity_rate = TN / (TN + FP)
+
+print(f"Specificity Rate: {specificity_rate}")
+
+
+precision = precision_score(y_test, y_pred)
+
+print(f"Precision: {precision}")
+
+
+balanced_accuracy = balanced_accuracy_score(y_test, y_pred)
+
+print(f"Balanced Accuracy: {balanced_accuracy}")
