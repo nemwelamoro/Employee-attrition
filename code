@@ -101,3 +101,19 @@ result = logit_model.fit()
 
 # Displaying the summary of the logistic regression model
 print(result.summary())
+
+
+import statsmodels.api as sm
+
+# Selecting variables that were deemed significant or didn't have high p-values for all levels
+X = X_train[['Age', 'DistanceFromHome', 'EnvironmentSatisfaction', 'JobSatisfaction', 'MonthlyIncome', 'NumCompaniesWorked', 'YearsAtCompany', 'MaritalStatus_Single']]
+y = y_train
+
+# Adding a constant to the model (intercept)
+X = sm.add_constant(X)
+
+# Building the logistic regression model
+log_reg = sm.Logit(y, X).fit()
+
+# Displaying the summary of the model
+print(log_reg.summary())
