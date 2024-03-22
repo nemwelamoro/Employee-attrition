@@ -235,3 +235,17 @@ import pandas as pd
 # Load the dataset
 df = pd.read_csv("F:/IBM.csv")
 df.head()
+
+# List of categorical variables to dummify
+categorical_vars = ['Department', 'EducationField', 'MaritalStatus'] 
+
+# Create dummy variables for the categorical variables and drop the first level
+df_dummies = pd.get_dummies(df, columns=categorical_vars, drop_first=False)
+
+# Convert 'Attrition' into binary format using LabelEncoder
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+df_dummies['Attrition'] = le.fit_transform(df_dummies['Attrition'])
+
+# Display the first few rows to verify
+print(df_dummies.head())
