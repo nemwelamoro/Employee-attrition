@@ -312,3 +312,19 @@ accuracy = accuracy_score(y_test, y_pred)
 
 # Print metrics
 print(f"a. Accuracy Rate: {accuracy}")
+
+sensitivity = recall_score(y_test, y_pred)  # also known as recall
+
+print(f"b. Sensitivity Rate (Recall): {sensitivity}")
+
+specificity = cm[0, 0] / (cm[0, 0] + cm[0, 1])
+
+print(f"c. Specificity Rate: {specificity}")
+
+precision = precision_score(y_test, y_pred)
+
+print(f"d. Precision: {precision}")
+
+balanced_accuracy = balanced_accuracy_score(y_test, y_pred)
+
+print(f"e. Balanced Accuracy: {balanced_accuracy}")
