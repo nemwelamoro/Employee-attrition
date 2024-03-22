@@ -87,3 +87,17 @@ print(f"Test set size: {X_test.shape[0]} samples")
 # use 'df_dummies' it's already been processed for categorical variables
 grouped_means = df_dummies.groupby('Attrition').mean()
 print(grouped_means)
+
+import statsmodels.api as sm
+
+# Add a constant to the independent variable set to account for the intercept
+X_train_const = sm.add_constant(X_train)
+
+# Building the logistic regression model
+logit_model = sm.Logit(y_train, X_train_const)
+
+# Fitting the model
+result = logit_model.fit()
+
+# Displaying the summary of the logistic regression model
+print(result.summary())
