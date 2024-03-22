@@ -35,3 +35,29 @@ df.drop(columns=columns_to_drop, inplace=True)
 # Verify columns have been dropped
 print("\nColumns remaining after dropping those with >50% missing values:")
 print(df.columns)
+
+
+#numeric variables
+df_numeric= df[["Age","DistanceFromHome","MonthlyIncome","NumCompaniesWorked","YearsAtCompany"]]
+    
+# Calculate the correlation matrix
+corr_matrix = df_numeric.corr()
+
+# Display the correlation matrix
+print("Correlation matrix of numeric variables:")
+print(corr_matrix)
+
+# Identify pairs with high correlation for potential multicollinearity issues
+high_corr_vars = set()
+threshold = 0.8  # or 0.9, depending on your preference
+
+for i in range(len(corr_matrix.columns)):
+    for j in range(i):
+        if abs(corr_matrix.iloc[i, j]) > threshold:
+            colname = corr_matrix.columns[i]
+            high_corr_vars.add(colname)
+
+# If there are any highly correlated pairs, decide on which one to remove
+# This requires domain knowledge and considering the importance of variables in your analysis
+print("\nVariables to consider removing due to high correlation:")
+print(high_corr_vars)
