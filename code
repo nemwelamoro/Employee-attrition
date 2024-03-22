@@ -18,3 +18,20 @@ df['Attrition'] = le.fit_transform(df['Attrition'])
 
 # Display the first few rows of the dataframe
 print(df[['Attrition']].head())
+
+# Calculate the percentage of missing values for each column
+missing_percentage = df.isnull().mean() * 100
+
+# Print the percentage of missing values
+print("Percentage of missing values per column:")
+print(missing_percentage)
+
+# Identify columns where more than 50% of the values are missing
+columns_to_drop = missing_percentage[missing_percentage > 50].index
+
+# Drop these columns from the DataFrame
+df.drop(columns=columns_to_drop, inplace=True)
+
+# Verify columns have been dropped
+print("\nColumns remaining after dropping those with >50% missing values:")
+print(df.columns)
