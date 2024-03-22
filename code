@@ -61,3 +61,12 @@ for i in range(len(corr_matrix.columns)):
 # This requires domain knowledge and considering the importance of variables in your analysis
 print("\nVariables to consider removing due to high correlation:")
 print(high_corr_vars)
+
+# List of categorical variables to dummify
+categorical_vars = ['Department', 'EducationField', 'MaritalStatus'] 
+
+# Create dummy variables for the categorical variables and drop the first level
+df_dummies = pd.get_dummies(df, columns=categorical_vars, drop_first=True)
+
+# Display the first few rows to verify
+print(df_dummies.head())
