@@ -337,3 +337,40 @@ print(f"Accuracy on the Training Set: {accuracy_train}")
 
 # The accuracy on the test set was previously calculated, but let's state it again for comparison
 print(f"Accuracy on the Test Set: {accuracy}")
+
+
+new_employee_data = {
+    'Age': [28],
+    'DistanceFromHome': [10],
+    'EnvironmentSatisfaction': [3],
+    'JobSatisfaction': [2],
+    'MonthlyIncome': [5000],
+    'NumCompaniesWorked': [2],
+    'YearsAtCompany': [3],
+    'MaritalStatus_Single': [1],
+    'MaritalStatus_Married': [0],
+    'MaritalStatus_Divorced': [0],
+    'Department_Sales': [0],  # Assuming not specified, hence not in Sales
+    'Department_Research & Development': [0],  # Assuming not specified
+    'Department_Human Resources': [0],  # Assuming not specified
+    'EducationField_Marketing': [0],  # Assuming not specified
+    'EducationField_Medical': [0],  # Assuming not specified
+    'EducationField_Life Sciences': [0],  # Assuming not specified
+    'EducationField_Technical Degree': [0],  # Assuming not specified
+    'EducationField_Other': [0],  # Assuming not specified
+    'EducationField_Human Resources': [0],  # Assuming not specified
+    'WorkLifeBalance': [3],  # Assuming a neutral work-life balance
+    'Education': [3]  # Assuming a Bachelor's degree level
+}
+
+# Convert to DataFrame
+df_new_employee = pd.DataFrame(new_employee_data)
+
+# Assuming 'best_rf' is your best-performing random forest model after GridSearchCV
+predicted_outcome_rf = best_rf.predict(df_new_employee)
+
+# Check if the model thinks the employee will leave
+if predicted_outcome_rf[0] == 1:
+    print("The model predicts that the employee will leave.")
+else:
+    print("The model predicts that the employee will stay.")
