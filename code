@@ -249,3 +249,10 @@ df_dummies['Attrition'] = le.fit_transform(df_dummies['Attrition'])
 
 # Display the first few rows to verify
 print(df_dummies.head())
+
+from sklearn.model_selection import train_test_split
+
+# the seed value used earlier was 3 
+X = df_dummies.drop('Attrition', axis=1)
+y = df_dummies['Attrition']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=3)
